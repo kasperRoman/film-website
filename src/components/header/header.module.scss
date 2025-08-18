@@ -64,7 +64,7 @@
       height: 2px;
       background-color: $main-color;
     }
-    &.active::after,
+    &.active::after, //Коли елемент має клас active, стилізує його псевдоелемент ::after
     &:hover::after {
       width: 100%;
     }

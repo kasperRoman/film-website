@@ -5,7 +5,7 @@ import { routes } from './config/Routes';
 import 'boxicons/css/boxicons.min.css';
 
 function App() {
-   
+  
   
   return (
     <div  >
