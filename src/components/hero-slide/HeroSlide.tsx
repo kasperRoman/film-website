@@ -1,26 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
-import { useNavigate } from "react-router-dom";
 
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
-import Button from "../button/Button";
 import Modal from "../modal/Modal";
 import ModalContent from "../modal/ModalContent";
 
 import tmdbApi from "../../api/tmdbApi";
-import apiConfig from "../../api/apiConfig";
-import {
-  Category,
-  CATEGORY,
-  MOVIE_TYPES,
-  MovieType,
-  TV_TYPES,
-  TvType,
-} from "../../types/tmdbTypes";
+
+import { CATEGORY, MOVIE_TYPES } from "../../types/tmdbTypes";
 import { IMovie } from "../../types/IMovie";
 
 import styles from "./hero-slide.module.scss";
@@ -63,34 +54,34 @@ const HeroSlide = () => {
     }
   };
 
-    const closeTrailer = () => {
-    setTrailerSrc('');
+  const closeTrailer = () => {
+    setTrailerSrc("");
     setActiveTrailerId(null);
   };
 
-  return <div className={styles.heroSlide}>
-  <Swiper
+  return (
+    <div className={styles.heroSlide}>
+      <Swiper
         modules={[Autoplay]}
         // autoplay={{ delay: 3000 }}
         grabCursor={true}
         spaceBetween={0}
         slidesPerView={1}
-  >
-       {movieItems.map((item) => (
+        loop= {true} 
+      >
+        {movieItems.map((item) => (
           <SwiperSlide key={item.id}>
             {({ isActive }) => (
               <HeroSlideItem
                 item={item}
                 isActive={isActive}
                 onWatchTrailer={() => openTrailer(item.id)}
-              
               />
-              // <img src={apiConfig.originalImage(item.backdrop_path)} alt="" />
             )}
           </SwiperSlide>
         ))}
-  </Swiper>
-{activeTrailerId !== null && (
+      </Swiper>
+      {activeTrailerId !== null && (
         <Modal active={true} id={`modal_${activeTrailerId}`}>
           <ModalContent onClose={closeTrailer}>
             {trailerSrc ? (
@@ -107,10 +98,8 @@ const HeroSlide = () => {
           </ModalContent>
         </Modal>
       )}
-
-
-
-  </div>;
+    </div>
+  );
 };
 
 export default HeroSlide;
