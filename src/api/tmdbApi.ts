@@ -1,20 +1,26 @@
 
 import axiosClient from "./axiosClient";
 import { Category,CATEGORY, MOVIE_TYPES, MovieType, TV_TYPES, TvType} from "../types/tmdbTypes"
+import { IResponseModel } from "../types/IResponseModel";
+import { IMovie } from "../types/IMovie";
+import { IResponseVideo } from "../types/IResponseVideo";
 
 
 const tmdbApi ={
-    getMoviesList: (type:MovieType , params?:object) =>{
+    getMoviesList: async (type:MovieType , params?:object):Promise<IResponseModel<IMovie>> =>{
         const url = 'movie/' + MOVIE_TYPES[type];
-        return axiosClient.get(url,params)
+        const response = await axiosClient.get<IResponseModel<IMovie>>(url,params)
+        return response.data
     },
     getTvList: (type:TvType , params?:object) =>{
         const url = 'tv/' + TV_TYPES[type];
         return axiosClient.get(url,params)
     },
-    getVideos: (cate:Category, id:any) =>{
+    getVideos:async (cate:Category, id:number):Promise<IResponseVideo> =>{
         const url = CATEGORY[cate] + '/' +id +'/videos';
-        return axiosClient.get(url,{params:{}})
+        const response = await axiosClient.get<IResponseVideo>(url,{params:{}})
+        return response.data
+        // return axiosClient.get(url,{params:{}})
     },
     search: (cate:Category, params?:object) =>{
         const url = 'search/' + CATEGORY[cate];
