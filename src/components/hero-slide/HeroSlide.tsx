@@ -29,7 +29,7 @@ const HeroSlide = () => {
         const response = await tmdbApi.getMoviesList(MOVIE_TYPES.popular, {
           params,
         });
-        setMovieItems(response.results.slice(0, 9));
+        setMovieItems(response.results.slice(0, 15));
         console.log(response);
       } catch {
         console.log("error");
@@ -61,6 +61,7 @@ const HeroSlide = () => {
 
   return (
     <div className={styles.heroSlide}>
+      {movieItems.length > 0 && (
       <Swiper
         modules={[Autoplay]}
         // autoplay={{ delay: 3000 }}
@@ -68,6 +69,7 @@ const HeroSlide = () => {
         spaceBetween={0}
         slidesPerView={1}
         loop= {true} 
+        key={movieItems.length}
       >
         {movieItems.map((item) => (
           <SwiperSlide key={item.id}>
@@ -81,6 +83,7 @@ const HeroSlide = () => {
           </SwiperSlide>
         ))}
       </Swiper>
+      )}
       {activeTrailerId !== null && (
         <Modal active={true} id={`modal_${activeTrailerId}`}>
           <ModalContent onClose={closeTrailer}>

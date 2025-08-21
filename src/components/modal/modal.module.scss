@@ -42,7 +42,7 @@
     color: $main-color;
   }
 }
-.active .content {
+.modal.active .content {
   opacity: 1;
   transform: translateY(0);
 }

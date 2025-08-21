@@ -33,74 +33,71 @@
   }
 }
 
-  .content {
-    @include flex(center, center);
-    position: relative;
+.content {
+  @include flex(center, center);
+  position: relative;
+}
+.info {
+  width: 55%;
+  padding: 0 3rem;
+  position: relative;
+
+  @include tablet {
+    width: 100%;
   }
-    .info {
-      width: 55%;
-      padding: 0 3rem;
-      position: relative;
 
-      @include tablet {
-        width: 100%;
-      }
+  & > * ~ * {
+    margin-top: 3rem;
+  }
 
-      & > * ~ * {
-        margin-top: 3rem;
-      }
-    
-      .title {
-        font-size: 5rem;
-        font-weight: 700;
-        line-height: 1;
+  .title {
+    font-size: 5rem;
+    font-weight: 700;
+    line-height: 1;
 
-        @include tablet {
-          font-size: 4rem;
-        }
-      }
-
-      .overview {
-        font-weight: 700;
-      }
-
-      .btns > * ~ * {
-        margin-left: 1rem;
-      }
-
-      .btns,
-      .title,
-      .overview {
-        opacity: 0;
-        transform: translateY(-100px);
-        transition: transform 0.5s ease, opacity 0.5s ease;
-      }
+    @include tablet {
+      font-size: 4rem;
     }
+  }
 
-    .poster {
-      flex: 1;
-      @include flex(center, flex-start);
-      position: relative;
+  .overview {
+    font-weight: 700;
+  }
 
-      img {
-        width: 400px;
-        border-radius: $border-radius;
-        box-shadow: $box-shadow;
-        transform: scale(0);
-        transition: transform 0.7s ease;
-      }
+  .btns > * ~ * {
+    margin-left: 1rem;
+  }
 
-      @include tablet {
-        display: none;
-      }
-    }
-  
+  .btns,
+  .title,
+  .overview {
+    opacity: 0;
+    transform: translateY(-100px);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+}
 
+.poster {
+  flex: 1;
+  @include flex(center, center);
+  position: relative;
+
+  img {
+    width: 400px;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    transform: scale(0);
+    transition: transform 0.7s ease;
+  }
+
+  @include tablet {
+    display: none;
+  }
+}
 
 .active .poster img {
   transform: scale(1);
 }
-
 
 .active .info .btns,
 .active .info .title,

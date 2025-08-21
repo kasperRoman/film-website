@@ -6,15 +6,23 @@ type ModalProps = {
   children: React.ReactNode;
 };
 
-const Modal: React.FC<ModalProps> = ({ active: activeProp = false, id, children }) => {
-  const [active, setActive] = useState(activeProp);
+const Modal: React.FC<ModalProps> = ({ active, id, children }) => {
+  const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
-    setActive(activeProp);
-  }, [activeProp]);
+    if (active) {
+      setIsActive(false);
+      const timer = setTimeout(() => setIsActive(true), 20);
+      return () => clearTimeout(timer);
+    } else {
+      setIsActive(false);
+    }
+  }, [active]);
+
+  // if (!active && !isActive) return null; // коли закрито, не рендеримо
 
   return (
-    <div id={id} className={`${styles.modal} ${active ? styles.active : ''}`}>
+    <div id={id} className={`${styles.modal} ${isActive ? styles.active : ''}`}>
       {children}
     </div>
   );
