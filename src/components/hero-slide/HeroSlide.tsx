@@ -29,7 +29,7 @@ const HeroSlide = () => {
         const response = await tmdbApi.getMoviesList(MOVIE_TYPES.popular, {
           params,
         });
-        setMovieItems(response.results.slice(0, 4));
+        setMovieItems(response.results.slice(0, 9));
         console.log(response);
       } catch {
         console.log("error");

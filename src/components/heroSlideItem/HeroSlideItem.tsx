@@ -3,15 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../button/Button';
 import apiConfig from '../../api/apiConfig';
 import styles from '../hero-slide/hero-slide.module.scss';
+import { IMovie } from '../../types/IMovie';
 
 type Props = {
-  item: {
-    id: number;
-    title: string;
-    overview: string;
-    backdrop_path: string;
-    poster_path: string;
-  };
+  item:IMovie;
   isActive: boolean;
   onWatchTrailer: () => void;
 };
