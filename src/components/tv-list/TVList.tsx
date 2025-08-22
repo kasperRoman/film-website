@@ -5,6 +5,7 @@ import tmdbApi from "../../api/tmdbApi";
 import { ITv } from "../../types/ITv";
 import { Swiper, SwiperSlide } from "swiper/react";
 import apiConfig from "../../api/apiConfig";
+import TVCard from "../tv-card/TVCard";
 
 type TvListProps = {
   category: Category;
@@ -23,7 +24,7 @@ const TVList: FC<TvListProps> = ({ category, type }) => {
       console.log(response);
     };
     getList();
-  }, []);
+  }, [type]);
 
   return (
     <div className={styles.tvList}>
@@ -36,7 +37,7 @@ const TVList: FC<TvListProps> = ({ category, type }) => {
       >
         {items.map((item, i) => (
           <SwiperSlide key={i} className={styles.swiperSlide}>
-            <img src={apiConfig.w500Image(item.poster_path)} alt="" />
+            <TVCard item={item} category={category}/>
           </SwiperSlide>
         ))}
       </Swiper>

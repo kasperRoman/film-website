@@ -5,6 +5,7 @@ import { IMovie } from '../../types/IMovie'
 import { Swiper, SwiperSlide } from "swiper/react";
 import apiConfig from '../../api/apiConfig';
 import styles from './movie-list.module.scss'
+import MovieCard from '../movi-card/MovieCard';
 
 type MovieListProps ={
     category:Category,
@@ -25,7 +26,7 @@ const MovieList:FC<MovieListProps> = ({category,type}) => {
 
     }
      getList()
-    },[])
+    },[type])
 
 
   return (
@@ -40,7 +41,7 @@ const MovieList:FC<MovieListProps> = ({category,type}) => {
                 {
                     items.map((item, i) => (
                         <SwiperSlide key={i} className={styles.swiperSlide}>
-                            <img src={apiConfig.w500Image(item.poster_path)} alt="" />
+                           <MovieCard item={item} category={category}/>
                         </SwiperSlide>
                     ))
                 }
