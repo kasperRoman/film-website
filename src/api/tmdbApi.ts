@@ -4,6 +4,7 @@ import { Category,CATEGORY, MOVIE_TYPES, MovieType, TV_TYPES, TvType} from "../t
 import { IResponseModel } from "../types/IResponseModel";
 import { IMovie } from "../types/IMovie";
 import { IResponseVideo } from "../types/IResponseVideo";
+import { ITv } from "../types/ITv";
 
 
 const tmdbApi ={
@@ -12,15 +13,17 @@ const tmdbApi ={
         const response = await axiosClient.get<IResponseModel<IMovie>>(url,params)
         return response.data
     },
-    getTvList: (type:TvType , params?:object) =>{
+    getTvList: async (type:TvType , params?:object):Promise<IResponseModel<ITv>> =>{
         const url = 'tv/' + TV_TYPES[type];
-        return axiosClient.get(url,params)
+        const response = await axiosClient.get<IResponseModel<ITv>>(url,params)
+        return response.data
+        // return axiosClient.get(url,params)
     },
     getVideos:async (cate:Category, id:number):Promise<IResponseVideo> =>{
         const url = CATEGORY[cate] + '/' +id +'/videos';
         const response = await axiosClient.get<IResponseVideo>(url,{params:{}})
         return response.data
-        // return axiosClient.get(url,{params:{}})
+       
     },
     search: (cate:Category, params?:object) =>{
         const url = 'search/' + CATEGORY[cate];
