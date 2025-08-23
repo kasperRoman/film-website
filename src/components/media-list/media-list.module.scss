@@ -1,6 +1,6 @@
 @use "../../scss/breakpoint" as *;
 
-.tvList{
+.mediaList{
     .swiperSlide{
         width: 15%;
         @include tablet {

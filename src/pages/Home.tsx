@@ -2,9 +2,8 @@ import React from "react";
 import HeroSlide from "../components/hero-slide/HeroSlide";
 import { Link } from "react-router-dom";
 import Button from "../components/button/Button";
-import MovieList from "../components/movie-list/MovieList";
 import { CATEGORY, MOVIE_TYPES, TV_TYPES } from "../types/tmdbTypes";
-import TVList from "../components/tv-list/TVList";
+import MediaList from "../components/media-list/MediaList";
 
 
 
@@ -22,7 +21,7 @@ const Home = () => {
               </Button>
             </Link>
           </div>
-          <MovieList category={CATEGORY.movie} type={MOVIE_TYPES.popular} />
+          <MediaList category={CATEGORY.movie} type={MOVIE_TYPES.popular} />
         </div>
         <div className="section mb-3">
           <div className="section__header mb-2">
@@ -33,7 +32,7 @@ const Home = () => {
               </Button>
             </Link>
           </div>
-          <MovieList category={CATEGORY.movie} type={MOVIE_TYPES.top_rated} />
+          <MediaList category={CATEGORY.movie} type={MOVIE_TYPES.top_rated} />
         </div>
         <div className="section mb-3">
           <div className="section__header mb-2">
@@ -44,7 +43,7 @@ const Home = () => {
               </Button>
             </Link>
           </div>
-          <TVList category={CATEGORY.tv} type={TV_TYPES.popular} />
+          <MediaList category={CATEGORY.tv} type={TV_TYPES.popular} />
         </div>
         <div className="section mb-3">
           <div className="section__header mb-2">
@@ -55,7 +54,7 @@ const Home = () => {
               </Button>
             </Link>
           </div>
-          <TVList category={CATEGORY.tv} type={TV_TYPES.top_rated} />
+          <MediaList category={CATEGORY.tv} type={TV_TYPES.top_rated} />
         </div>
       </div>
     </>

@@ -17,7 +17,7 @@ const tmdbApi ={
         const url = 'tv/' + TV_TYPES[type];
         const response = await axiosClient.get<IResponseModel<ITv>>(url,params)
         return response.data
-        // return axiosClient.get(url,params)
+        
     },
     getVideos:async (cate:Category, id:number):Promise<IResponseVideo> =>{
         const url = CATEGORY[cate] + '/' +id +'/videos';
