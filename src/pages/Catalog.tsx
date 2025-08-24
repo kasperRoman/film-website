@@ -2,7 +2,8 @@ import React, { useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import CatalogHeader from '../components/catalog-header/CatalogHeader';
 import {Category, CATEGORY} from '../types/tmdbTypes'
-import MovieGrid from '../components/movie-grid/MovieGrid';
+import MediaGrid from '../components/media-grid/MediaGrid';
+
 
 
 const Catalog = () => {
@@ -28,7 +29,7 @@ const Catalog = () => {
       <CatalogHeader category={category}/>
       <div className='container'>
         <div className='section mb-3'>
-          
+          <MediaGrid category={category}/>
         </div>
       </div>
     

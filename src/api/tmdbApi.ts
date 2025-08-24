@@ -25,9 +25,11 @@ const tmdbApi ={
         return response.data
        
     },
-    search: (cate:Category, params?:object) =>{
+    search: async (cate:Category, params?:object) =>{
         const url = 'search/' + CATEGORY[cate];
-        return axiosClient.get(url,params)
+        const response = await axiosClient.get(url,params)
+        return response.data
+        
     },
     details: (cate:Category,id:any, params?:object) =>{
         const url = CATEGORY[cate] + '/' + id  ;
@@ -37,9 +39,11 @@ const tmdbApi ={
         const url = CATEGORY[cate] + '/' + id + '/credits'  ;
         return axiosClient.get(url,{params:{}})
     },
-     similar: (cate:Category, id:any) =>{
+     similar: async (cate:Category, id:any) =>{
         const url = CATEGORY[cate] + '/' +id +'/similar';
-        return axiosClient.get(url,{params:{}})
+        const response = axiosClient.get(url,{params:{}});
+        return (await response).data
+        
     },
 
 }
