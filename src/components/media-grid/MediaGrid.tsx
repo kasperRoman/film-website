@@ -7,6 +7,7 @@ import { ITv } from "../../types/ITv";
 import { useParams } from "react-router-dom";
 import tmdbApi from "../../api/tmdbApi";
 import Button from "../button/Button";
+import MediaSearch from "../media-search/MediaSearch";
 
 type MediaGridProps = {
   category: Category;
@@ -74,6 +75,9 @@ const MediaGrid: FC<MediaGridProps> = ({ category }) => {
 
   return (
     <>
+    <div className="section mb-3">
+      <MediaSearch category={category} initialKeyword={keyword}/>
+    </div>
     <div className={styles.grid}>
       {items.map((item, i) => (
         <MediaCard item={item} category={category} key={i} />
