@@ -31,13 +31,17 @@ const tmdbApi ={
         return response.data
         
     },
-    details: (cate:Category,id:any, params?:object) =>{
+    details: async(cate:Category,id:string, params?:object) =>{
         const url = CATEGORY[cate] + '/' + id  ;
-        return axiosClient.get(url,params)
+        const response = await axiosClient.get(url,params)
+        return response.data
+     
     },
-    credits: (cate:Category,id:any) =>{
+    credits: async (cate:Category,id:string) =>{
         const url = CATEGORY[cate] + '/' + id + '/credits'  ;
-        return axiosClient.get(url,{params:{}})
+        const responce = await axiosClient.get(url,{params:{}})
+        return responce.data
+    
     },
      similar: async (cate:Category, id:any) =>{
         const url = CATEGORY[cate] + '/' +id +'/similar';

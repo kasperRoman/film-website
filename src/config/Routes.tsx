@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Mainlayout from "../layouts/Mainlayout";
 import Home from "../pages/Home";
 import Catalog from "../pages/Catalog";
-import Details from "../pages/Details";
+import Details from "../pages/detail/Details";
 import CustomErrorLayout from "../layouts/CustomErrorLayout";
 
 export const routes = createBrowserRouter([
