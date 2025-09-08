@@ -87,3 +87,20 @@
   font-weight: 600;
   background-color: $body-bg;
 }
+
+
+.casts {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 10px;
+}
+
+.castsItemImage{
+              padding-top: 160px;
+             
+            background-size: cover;
+            margin-bottom: 0.5rem;
+}
+.castsName {
+  font-size: 0.8rem;
+}

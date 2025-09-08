@@ -8,6 +8,8 @@ import apiConfig from "../../api/apiConfig";
 import { IDetailMovie } from "../../types/IDetailMovie";
 import { IDetailTV } from "../../types/IDetailTv";
 import clsx from "clsx";
+import CastList from "./CastList";
+import VideoList from "../../components/video-list/VideoList";
 
 const Details = () => {
   const { category, id } = useParams<{ category: Category; id: string }>();
@@ -27,7 +29,7 @@ const Details = () => {
 
   return (
     <>
-      {item && (
+      {item && id && (
         <>
           <div
             className={styles.banner}
@@ -67,8 +69,14 @@ const Details = () => {
                   <div className="section__header">
                     <h2>Cast</h2>
                   </div>
+                  <CastList  id= {item.id}/>
                 </div>
               </div>
+          </div>
+          <div className="container">
+            <div className="section mb-3">
+               <VideoList id={id}/>
+            </div>
           </div>
         </>
       )}

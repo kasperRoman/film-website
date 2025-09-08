@@ -4,9 +4,10 @@ import { Category } from "../../types/tmdbTypes";
 import tmdbApi from "../../api/tmdbApi";
 import { ICast } from "../../types/ICredits";
 import apiConfig from "../../api/apiConfig";
+import style from './detail.module.scss'
 
 type CastListProps = {
-  id: string;
+  id: number;
 };
 
 const CastList: FC<CastListProps> = ({ id }) => {
@@ -26,15 +27,16 @@ const CastList: FC<CastListProps> = ({ id }) => {
   }, [category, id]);
 
   return (
-    <div>
+    <div className={style.casts}>
       {casts.map((item, i) => (
-        <div key={i}>
+        <div key={i} className={style.castsItem}>
           <div
+          className={style.castsItemImage}
             style={{
               backgroundImage: `url(${apiConfig.w500Image(item.profile_path)})`,
             }}
           ></div>
-          <p>{item.name}</p>
+          <p className={style.castsItemName}>{item.name}</p>
         </div>
       ))}
     </div>

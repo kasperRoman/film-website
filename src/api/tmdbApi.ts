@@ -37,7 +37,7 @@ const tmdbApi ={
         return response.data
      
     },
-    credits: async (cate:Category,id:string) =>{
+    credits: async (cate:Category,id:number) =>{
         const url = CATEGORY[cate] + '/' + id + '/credits'  ;
         const responce = await axiosClient.get(url,{params:{}})
         return responce.data
